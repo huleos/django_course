@@ -1,0 +1,12 @@
+body{
+	margin: 0;
+	background-color: #f1f1f1;
+	font-family: sans-serif;
+}
+
+.containe{
+	width: 100%;
+	max-width: 71.25rem;
+	margin-left: auto;
+	margin-right: auto;
+}
