@@ -4,9 +4,62 @@ body{
 	font-family: sans-serif;
 }
 
-.containe{
+nav{
+	background-color: #000;
+	display: inline-block;
+	width: 100%;
+	height: 3.4375rem;
+}
+
+.container{
 	width: 100%;
 	max-width: 71.25rem;
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.content{
+	padding-top: 2.75rem;
+}
+
+.brand{
+	float: left;
+	margin: 10px 0;
+	font-size: 1.5rem;
+}
+
+.brand a{
+	color: #fff;
+	text-decoration: none;
+}
+
+article{
+	width: 100%;
+}
+
+article time{
+	font-size: .875rem;
+	color: #999;
+}
+
+article h1{
+	margin: 0;
+}
+
+article a{
+	text-decoration: none;
+	color: #333;
+}
+
+article img{
+	display: block;
+	max-width: 100%;
+	margin: 1rem auto;
+}
+
+
+
+
+
+
+

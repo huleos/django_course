@@ -7,8 +7,22 @@
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-	{% block content %}
-	{% endblock %}
+
+<nav>
+	<div class="container">
+		<div class="brand">
+			<a href="/">Djago <small>Course</small></a>
+		</div>
+	</div>
+</nav>
+
+<div class="content">
+	<div class="container">
+		{% block content %}
+		{% endblock %}
+	</div>
+</div>
+
 	<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

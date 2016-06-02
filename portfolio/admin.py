@@ -1,3 +1,10 @@
 from django.contrib import admin
+from portfolio.models import PortfolioItem, Category
 
-# Register your models here.
+
+class PortfolioAdmin(admin.ModelAdmin):
+	filter_horizontal = ['categories']
+
+
+admin.site.register(PortfolioItem, PortfolioAdmin)
+admin.site.register(Category)

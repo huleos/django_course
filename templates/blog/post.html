@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<article>
+	<time>{{ post.date_create }}</time>
+	<h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+	<small><strong>By: </strong>{{ post.author }}</small>
+	<p>{{ post.body }}</p>
+	<hr>
+</article>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<article>
+	<time>{{ portfolio.date_create }}</time>
+	<h1><a href="{{ portfolio.get_absolute_url }}">{{ portfolio.title }}</a></h1>
+	<small><strong>By: </strong>{{ portfolio.author }}</small>
+	<p>{{ portfolio.body }}</p>
+	<img src="/{{ portfolio.image }}" alt="{{ portfolio.title }}">
+	<hr>
+</article>
+{% endblock %}
