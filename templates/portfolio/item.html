@@ -6,7 +6,10 @@
 	<h1><a href="{{ portfolio.get_absolute_url }}">{{ portfolio.title }}</a></h1>
 	<small><strong>By: </strong>{{ portfolio.author }}</small>
 	<p>{{ portfolio.body }}</p>
-	<img src="/{{ portfolio.image }}" alt="{{ portfolio.title }}">
+	<img src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
+	{% for category in portfolio.categories.all %}
+		<span>{{ category }}</span>
+	{% endfor %}
 	<hr>
 </article>
 {% endblock %}
