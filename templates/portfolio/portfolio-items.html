@@ -1,5 +1,58 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Hello Portfolio! <small>[items]</small></h1>
+	{% for portfolio in portfolios %}
+	<article>
+		<time>{{ portfolio.date_create }}</time>
+		<h1><a href="{{ portfolio.get_absolute_url }}">{{ portfolio.title }}</a></h1>
+		<small><strong>By: </strong>{{ portfolio.author }}</small>
+		<p>{{ portfolio.body|truncatewords_html:50|safe }}</p>
+		<img src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
+		{% for category in portfolio.categories.all %}
+			<span>{{ category }}</span>
+		{% endfor %}
+		<hr>
+	</article>
+	{% endfor %}
+
+	{% if is_paginated %}
+	  <nav>
+	    <ul class="pagination">
+	      {% if page_obj.has_previous %}
+	        <li>
+	          <a href="?page={{ page_obj.previous_page_number }}">
+	            <span>Previous</span>
+	          </a>
+	        </li>
+	      {% else %}
+	        <li class="disabled">
+	          <a href="#">
+	            <span>Previous</span>
+	          </a>
+	        </li>
+	      {% endif %}
+
+	      {% for page in paginator.page_range %}
+	        <li {% if page == page_obj.number %}class="active"{% endif %}>
+	          <a href="?page={{ page }}">{{ page }}</a>
+	        </li>
+	      {% endfor %}
+
+	      {% if page_obj.has_next %}
+	        <li>
+	          <a href="?page={{ page_obj.next_page_number }}">
+	            <span>Next</span>
+	          </a>
+	        </li>
+	      {% else %}
+	        <li {% if not page_obj.has_next %}class="disabled"{% endif %}>
+	          <a href="#">
+	            <span>Next</span>
+	          </a>
+	        </li>
+	      {% endif %}
+	    </ul>
+	  </nav>
+	{% endif %}
+
 {% endblock %}
