@@ -5,7 +5,7 @@
 	<time>{{ portfolio.date_create }}</time>
 	<h1><a href="{{ portfolio.get_absolute_url }}">{{ portfolio.title }}</a></h1>
 	<small><strong>By: </strong>{{ portfolio.author }}</small>
-	<p>{{ portfolio.body }}</p>
+	<p>{{ portfolio.body|safe }}</p>
 	<img src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
 	{% for category in portfolio.categories.all %}
 		<span>{{ category }}</span>

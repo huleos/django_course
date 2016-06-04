@@ -4,6 +4,16 @@ body{
 	font-family: sans-serif;
 }
 
+a{
+	color: #1e73be;
+}
+
+a:hover, a:active, a:focus {
+	color: #1e73be;
+	outline: 0;
+	text-decoration: none;
+}
+
 nav{
 	background-color: #000;
 	display: inline-block;

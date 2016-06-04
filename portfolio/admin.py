@@ -19,7 +19,7 @@ class PortfolioAdmin(admin.ModelAdmin):
 		(None, {
 			'fields': ('author',)
 		}),
-		('POsrtfolio details',{
+		('Portfolio details',{
 			'fields': (('title', 'slug',), 'status', 'body', 'image', 'categories')
 		}),
 		('Dates',{
@@ -27,7 +27,6 @@ class PortfolioAdmin(admin.ModelAdmin):
 		})
 	)	
 	filter_horizontal = ['categories']
-	raw_id_fields = ('author',)
 	search_fields = ('title', 'body', 'author__email')
 	save_on_top = True
 	readonly_fields = ('date_create', 'date_update')
