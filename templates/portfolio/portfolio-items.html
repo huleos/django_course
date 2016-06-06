@@ -9,7 +9,7 @@
 		<p>{{ portfolio.body|truncatewords_html:50|safe }}</p>
 		<img src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
 		{% for category in portfolio.categories.all %}
-			<span>{{ category }}</span>
+			<span>{{ category }}, </span>
 		{% endfor %}
 		<hr>
 	</article>
