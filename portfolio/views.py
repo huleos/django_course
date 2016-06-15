@@ -5,8 +5,21 @@ from django.views.generic import (
 	CreateView,
 	UpdateView,
 	DeleteView,
+	TemplateView,
 )
 from portfolio.models import PortfolioItem
+from blog.models import Post
+from django.db.models import Q
+
+
+class PortfolioView(TemplateView):
+	template_name = 'portfolio/index.html'
+
+	def get_context_data(self, **kwargs):
+		context = super(PortfolioView, self).get_context_data(**kwargs)
+		context['posts'] = Post.objects.all()[:3]
+		context['portfolios'] = PortfolioItem.objects.filter(Q(status='draft') | Q(status='published'))[:3]
+		return context
 
 
 class DetailPortfolio(DetailView):

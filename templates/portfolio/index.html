@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% for post in posts %}
+	<article>
+		<time>{{ post.date_create }}</time>
+		<h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+		<small><strong>By: </strong>{{ post.author }}</small>
+		<p>{{ post.body|truncatewords_html:50|safe }}</p>
+		{% for category in post.categories.all %}
+			<span>{{ category }}, </span>
+		{% endfor %}
+		<hr>
+	</article>
+	{% endfor %}
+
+	{% for portfolio in portfolios %}
+	<article>
+		<time>{{ portfolio.date_create }}</time>
+		<h1><a href="{{ portfolio.get_absolute_url }}">{{ portfolio.title }}</a></h1>
+		<small><strong>By: </strong>{{ portfolio.author }}</small>
+		<p>{{ portfolio.body|truncatewords_html:50|safe }}</p>
+		<img src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
+		{% for category in portfolio.categories.all %}
+			<span>{{ category }}, </span>
+		{% endfor %}
+		<hr>
+	</article>
+	{% endfor %}
+
+{% endblock %}
