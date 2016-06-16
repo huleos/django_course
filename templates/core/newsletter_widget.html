@@ -1,0 +1,13 @@
+{% load widget_tweaks %}
+<form action="/newsletter/" method="POST">
+	{% csrf_token %}
+	{{ form.name.errors }}
+	<label>{{ form.name.label }}:</label>
+	{{ form.name|add_class:'mi-clase'|attr:'placeholder:Your name' }}
+	<br>
+	{{ form.email.errors }}
+	<label>{{ form.email.label }}:</label>
+	{{ form.email|add_class:'mi-clase'|attr:'placeholder:Your email address' }}
+	<br>
+	<button type="submit">Subscribe</button>
+</form>

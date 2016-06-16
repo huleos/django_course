@@ -10,6 +10,7 @@ from django.views.generic import (
 from portfolio.models import PortfolioItem
 from blog.models import Post
 from django.db.models import Q
+from portfolio.forms import PortfolioForm
 
 
 class PortfolioView(TemplateView):
@@ -40,7 +41,7 @@ class ListPortfolio(ListView):
 class CreatePortfolio(CreateView):
 	template_name = 'portfolio/create-portfolio.html'
 	model = PortfolioItem
-	fields = ['title', 'status', 'body', 'image', 'categories',]
+	form_class = PortfolioForm
 
 
 class UpdatePortfolio(UpdateView):

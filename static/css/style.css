@@ -68,6 +68,22 @@ article img{
 }
 
 
+/*
+Error Messages
+*/
+
+.errorlist{
+	padding: 15px;
+	border: 1px solid #ebccd1;
+	list-style: none;
+	color: #a94442;
+  background-color: #f2dede;
+	border-radius: 4px;
+}
+
+.helptext{
+	color: #4f4f4f;
+}
 
 
 
