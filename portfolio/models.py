@@ -13,10 +13,10 @@ STATUSES = (
 
 class PortfolioItem(models.Model):
 	author = models.ForeignKey('auth.User', on_delete=models.SET_NULL, blank=True, null=True)
-	categories = models.ManyToManyField('Category')
+	categories = models.ManyToManyField('Category', blank=True)
 	title = models.CharField(max_length=255)
 	slug = models.SlugField(max_length=300, blank=True, default='')
-	image = models.ImageField(upload_to='portfolio/')
+	image = models.ImageField(upload_to='portfolio/', blank=True, null=True)
 	body = models.TextField()
 	status = models.CharField(max_length=50, default='draft', choices=STATUSES)
 	date_create = models.DateTimeField(auto_now_add=True)
@@ -25,10 +25,10 @@ class PortfolioItem(models.Model):
 	def __unicode__(self):
 		return self.title
 
-	def save(self):
+	def save(self, *args, **kwargs):
 		if self.id is None:
 			self.slug = slugify(self.title)
-		return super(PortfolioItem, self).save()
+		return super(PortfolioItem, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
 		return reverse('portfolio-item', kwargs={'slug': self.slug})
