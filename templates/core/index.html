@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load core_tags %}
+{% load staticfiles core_tags %}
 
 {% block content %}
 	<h1>Homepage</h1>
@@ -10,5 +10,26 @@
 		<input type="password" name="password">
 		<button type="submit">Log in</button>
 	</form>
+	
+	<label for="">Search</label>
+	<input type="text" id="search">
+	<button id="send-search">Search</button>
+	<ul id="results"></ul>
 
+
+	<h1>CREATE POST</h1>
+	<form id="create-post" action="/portfolio/api/portfolios/" method="post" enctype="application/json">
+		<label for="">Title: </label><input type="text" name="title"><br>
+		<label for="">Body: </label><textarea name="body" id="" cols="30" rows="10"></textarea><br>
+		<label for="">Status: </label><select name="" id="">
+			<option value="">draft</option>
+			<option value="">published</option>
+		</select><br>
+		<button type="submit">Create portfolio</button>
+	</form>
+
+{% endblock %}
+
+{% block extra_js %}
+	<script src="{% static 'js/search.js' %}"></script>
 {% endblock %}
