@@ -7,6 +7,8 @@ from django.views.generic import (
 	DeleteView,
 	TemplateView,
 )
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from portfolio.models import PortfolioItem
 from blog.models import Post
 from django.db.models import Q
@@ -38,20 +40,25 @@ class ListPortfolio(ListView):
 	queryset = PortfolioItem.objects.all()
 
 
+@method_decorator(login_required, name='dispatch')
 class CreatePortfolio(CreateView):
 	template_name = 'portfolio/create-portfolio.html'
 	model = PortfolioItem
 	form_class = PortfolioForm
 
 
+@method_decorator(login_required, name='dispatch')
 class UpdatePortfolio(UpdateView):
 	template_name = 'portfolio/create-portfolio.html'
 	model = PortfolioItem
 	fields = ['title', 'status', 'body', 'image', 'categories',]
 
 
+@method_decorator(login_required, name='dispatch')
 class DeletePortfolio(DeleteView):
 	template_name = 'portfolio/delete-portfolio.html'
 	model = PortfolioItem
 	context_object_name = 'portfolio'
 	success_url = reverse_lazy('portfolio-list')
+
+	

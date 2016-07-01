@@ -15,7 +15,13 @@
 	<input type="text" id="search">
 	<button id="send-search">Search</button>
 	<ul id="results"></ul>
-
+	
+	{% if request.user.is_authenticated  %}
+		<h1>logeado</h1>
+	{% endif %}
+	{% if request.user.is_staff %}
+		<a href="https://docs.djangoproject.com/es/1.9/ref/contrib/auth/#methods" target="_blank">Permisos</a>
+	{% endif %}
 
 	<h1>CREATE POST</h1>
 	<form id="create-post" action="/portfolio/api/portfolios/" method="post" enctype="application/json">
