@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Hello Blog!</h1>
+	{% for post in posts %}
+	<article>
+		<h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+		<small class="author">{{ post.author }}</small>
+		<span> // </span>
+		<time>{{ post.date_create | date }}</time>
+		<p>{{ post.body|truncatewords_html:50|safe }}</p>
+		{% for category in post.categories.all %}
+			<span class="categories">{{category}}</span>
+		{% endfor %}
+		<hr>
+	</article>
+	{% endfor %}
 {% endblock %}

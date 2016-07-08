@@ -3,10 +3,14 @@
 {% block content %}
 <article>
 	<time>{{ post.date_create }}</time>
-	<h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-	<small><strong>By: </strong>{{ post.author }}</small>
-	<p>{{ post.body }}</p>
-	<span>{{ post.categories }}</span>
+	<h1>{{ post.title }}</h1>
+	<small class="author">{{ post.author }}</small>
+	<span> // </span>
+	<time>{{ post.date_create | date }}</time>
+	<p>{{ post.body|safe }}</p>
+	{% for category in post.categories.all %}
+	<span class="categories">{{category}}</span>
+	{% endfor %}
 	<hr>
 </article>
 {% endblock %}
